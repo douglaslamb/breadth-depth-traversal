@@ -1,0 +1,38 @@
+[
+  {
+    "data": 1,
+    "nodes": [2, 3, 4]
+  },
+  {
+    "data": 2,
+    "nodes": [6, 7]
+  },
+  {
+    "data": 3,
+    "nodes": [5]
+  },
+  {
+    "data": 4,
+    "nodes": [8, 9]
+  },
+  {
+    "data": 5,
+    "nodes": []
+  },
+  {
+    "data": 6,
+    "nodes": []
+  },
+  {
+    "data": 7,
+    "nodes": []
+  },
+  {
+    "data": 8,
+    "nodes": []
+  },
+  {
+    "data": 9,
+    "nodes": []
+  }
+]
