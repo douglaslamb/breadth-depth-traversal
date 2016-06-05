@@ -13,6 +13,11 @@ type Node struct {
 	Nodes []*Node `json:"nodes"`
 }
 
+type WrapNode struct {
+	Node     *Node
+	Distance int
+}
+
 func (n *Node) addNext(node *Node) {
 	n.Nodes = append(n.Nodes, node)
 }
@@ -23,9 +28,22 @@ func main() {
 		panic(err)
 	}
 	nodesHash := ingestJson(dat)
-	fmt.Println(nodesHash[4].Nodes)
 
 	// breadth first transversal first just print their names I guess
+	fmt.Println("Breadth First")
+	queue := []*WrapNode{}
+	startNode := WrapNode{nodesHash[1], 0}
+	queue = append(queue, &startNode)
+	for len(queue) != 0 {
+		curr := queue[0]
+		queue = queue[1:]
+		fmt.Printf("%v %v", curr.Node.Data, curr.Distance)
+		fmt.Println()
+		neighbors := curr.Node.Nodes
+		for _, node := range neighbors {
+			queue = append(queue, &WrapNode{node, curr.Distance + 1})
+		}
+	}
 }
 
 func ingestJson(dat []byte) map[int]*Node {
