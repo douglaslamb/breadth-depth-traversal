@@ -31,6 +31,7 @@ func main() {
 
 	// breadth first transversal first just print their names I guess
 	fmt.Println("Breadth First")
+	fmt.Println()
 	queue := []*WrapNode{}
 	startNode := WrapNode{nodesHash[1], 0}
 	queue = append(queue, &startNode)
@@ -44,6 +45,23 @@ func main() {
 			queue = append(queue, &WrapNode{node, curr.Distance + 1})
 		}
 	}
+	// depth first transversal first just print their names I guess
+	fmt.Println("Depth First")
+	fmt.Println()
+	stack := []*WrapNode{}
+	//startNode := WrapNode{nodesHash[1], 0}
+	stack = append(stack, &startNode)
+	for len(stack) != 0 {
+		curr := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		fmt.Printf("%v %v", curr.Node.Data, curr.Distance)
+		fmt.Println()
+		neighbors := curr.Node.Nodes
+		for _, node := range neighbors {
+			stack = append(stack, &WrapNode{node, curr.Distance + 1})
+		}
+	}
+
 }
 
 func ingestJson(dat []byte) map[int]*Node {
