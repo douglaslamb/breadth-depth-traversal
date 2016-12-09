@@ -37,6 +37,9 @@ func main() {
 	// breadth first traversal
 	// print the Data and Distance values of each node
 	fmt.Println("Breadth First")
+	fmt.Println()
+	fmt.Printf("%4v %9v", "Data", "Distance")
+	fmt.Println()
 	queue := []*WrapNode{}
 
 	// pull out the root node of the graph which is always at [1]
@@ -54,36 +57,40 @@ func main() {
 		queue = queue[1:]
 
 		// print the current node's Data and Distance
-		fmt.Printf("%v %v", curr.Node.Data, curr.Distance)
+		fmt.Printf("%4v %9v", curr.Node.Data, curr.Distance)
 		fmt.Println()
 
-		// put the current node's children onto the queue
+		// add the current node's children to the queue
 		children := curr.Node.Nodes
 		for _, node := range children {
 			queue = append(queue, &WrapNode{node, curr.Distance + 1})
 		}
 	}
+	fmt.Println()
 
-	// depth first transversal
+	// depth first traversal
 	// print the Data and Distance values of each node
 	fmt.Println("Depth First")
+	fmt.Println()
+	fmt.Printf("%4v %9v", "Data", "Distance")
+	fmt.Println()
 	stack := []*WrapNode{}
 
 	// add root node to stack
 	stack = append(stack, &startNode)
 
 	for len(stack) != 0 {
-		// pop node from back of stack
+		// pop node from end of stack
 		curr := stack[len(stack)-1]
 
 		// move end of stack back one index
 		stack = stack[:len(stack)-1]
 
 		// print the current node's Data and Distance
-		fmt.Printf("%v %v", curr.Node.Data, curr.Distance)
+		fmt.Printf("%4v %9v", curr.Node.Data, curr.Distance)
 		fmt.Println()
 
-		// put the current node's children onto the stack
+		// add the current node's children to the stack
 		children := curr.Node.Nodes
 		for _, node := range children {
 			stack = append(stack, &WrapNode{node, curr.Distance + 1})
@@ -92,18 +99,27 @@ func main() {
 }
 
 func ingestJson(dat []byte) map[int]*Node {
+	// This function reads a buffer containing
+	// a json array representing an acyclic directed graph.
+	// It returns a hash of objects which realizes
+	// the described graph.
+
 	var nodesRaw []map[string]interface{}
 	nodesHash := map[int]*Node{}
+
 	if err := json.Unmarshal(dat, &nodesRaw); err != nil {
 		panic(err)
 	}
-	// putting all nodes in a hash
+
+	// put all nodes in a hash
+	// each node's Data property is its hash key
 	for _, node := range nodesRaw {
 		rawData := node["data"].(float64)
 		data := int(rawData)
 		nodesHash[data] = &Node{data, []*Node{}}
 	}
-	// then linking up nodes
+
+	// link up the nodes
 	for _, node := range nodesRaw {
 		rawData := node["data"].(float64)
 		data := int(rawData)
