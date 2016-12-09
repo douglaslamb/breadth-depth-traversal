@@ -12,7 +12,7 @@ import (
 
 type Node struct {
 	Data  int     `json:"data"`
-	Nodes []*Node `json:"nodes"`
+	Nodes []*Node `json:"children"`
 }
 
 type WrapNode struct {
@@ -124,7 +124,7 @@ func ingestJson(dat []byte) map[int]*Node {
 		rawData := node["data"].(float64)
 		data := int(rawData)
 		theNode := nodesHash[data]
-		rawNextArray := node["nodes"]
+		rawNextArray := node["children"]
 		nextArray := rawNextArray.([]interface{})
 		for _, rawNodeNum := range nextArray {
 			nodeNum := int(rawNodeNum.(float64))

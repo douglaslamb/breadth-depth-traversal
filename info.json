@@ -1,62 +1,30 @@
 [
   {
     "data": 1,
-    "nodes": [2, 24, 56]
+    "children": [2, 3]
   },
   {
     "data": 2,
-    "nodes": [9, 4, 5]
+    "children": [4, 5]
   },
   {
     "data": 3,
-    "nodes": []
+    "children": [6, 7]
   },
   {
     "data": 4,
-    "nodes": []
+    "children": []
   },
   {
     "data": 5,
-    "nodes": [3, 10, 6, 7, 15]
+    "children": []
   },
   {
     "data": 6,
-    "nodes": []
+    "children": []
   },
   {
     "data": 7,
-    "nodes": []
-  },
-  {
-    "data": 24,
-    "nodes": [21, 22]
-  },
-  {
-    "data": 21,
-    "nodes": []
-  },
-  {
-    "data": 22,
-    "nodes": []
-  },
-  {
-    "data": 56,
-    "nodes": [57]
-  },
-  {
-    "data": 57,
-    "nodes": []
-  },
-  {
-    "data": 15,
-    "nodes": []
-  },
-  {
-    "data": 10,
-    "nodes": []
-  },
-  {
-    "data": 9,
-    "nodes": []
+    "children": []
   }
 ]
