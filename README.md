@@ -35,15 +35,26 @@ Data|Distance
    5         |2
    4         |2
 
+The tree in info.json looks like this.
+```
+        [1]
+        / \
+     [2]   [3]
+    / \     / \ 
+ [4]  [5] [6]  [7]
+```
+
 ## Discussion
 
-This output represents the breadth-first and depth-first traversals of the tree described in info.json. Each node in the tree has a Data property and each node is some Distance from the root node of the tree. The order in which the nodes are processed by the algorithm is the order in which they are printed.
+This output represents the breadth-first and depth-first traversals of the tree described in info.json. This tree is just an example. There is nothing special about it.
+
+Each node in the tree has a Data property and each node is some Distance from the root node of the tree. The order in which the nodes are processed by the algorithm is the order in which they are printed.
 
 info.json is an array of objects corresponding to the nodes in the tree. Each node has a "data" property (a unique integer which identifies it) and a "children" property (an array containing the "data" values of its children). The root node must always have a "data" property of 1—the program identifies the root node as having a "data" value of 1.
 
 ## Example
 
-This is a very simple tree.
+This is how a very simple tree would look in info.json.
 
 ```
 [
